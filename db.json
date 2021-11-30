@@ -1,0 +1,18 @@
+{
+    "contratos" : [
+        {
+            "id": "1",
+            "Servico": "Serviço 1",
+            "Quantidade": "1",
+            "Valor_Unitario": "10,00",
+            "Valor_Total": "10,00"
+        },
+        {
+            "id": "2",
+            "Servico": "Serviço 2",
+            "Quantidade": "4",
+            "Valor_Unitario": "10,00",
+            "Valor_Total": "40,00"
+        }
+    ]
+}

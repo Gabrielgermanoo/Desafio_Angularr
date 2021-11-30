@@ -1,0 +1,245 @@
+<div class="d-flex">
+    <div class="card" style="position: absolute; top: 130px; left: 250px; width: 120vh;">
+        <div class="card-header">
+            <h5 class="card-title" style="margin: 0">Cadastrar contrato</h5>
+        </div>
+        <div class="card-body">
+            <!-- aba navegação (tabs) -->
+
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="geral-tab" data-bs-toggle="tab" data-bs-target="#geral"
+                        type="button" role="tab" aria-controls="geral" aria-selected="true">
+                        Geral
+                    </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="itens-tab" data-bs-toggle="tab" data-bs-target="#itens" type="button"
+                        role="tab" aria-controls="itens" aria-selected="false">
+                        Itens
+                    </button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="projeto-tab" data-bs-toggle="tab" data-bs-target="#projeto"
+                        type="button" role="tab" aria-controls="projeto" aria-selected="false">
+                        Projeto
+                    </button>
+                </li>
+
+            </ul>
+            <!-- //aba navegação (tabs) -->
+
+            <div class="tab-content mt-2" id="myTabContent">
+                <!-- aba geral-->
+                <div class="tab-pane fade show active" id="geral" role="tabpanel" aria-labelledby="geral-tab">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col">
+                                <label for="numero" class="form-label">Número(nnn/aaaa)</label>
+                                <input type="text" class="form-control" id="numero" disabled>
+                            </div>
+                            <div class="col">
+                                <label for="prestador" class="form-label">Prestador</label>
+                                <input type="text" class="form-control" id="prestador" disabled>
+                            </div>
+                            <div class="col">
+                                <label for="valor" class="form-label">Valor</label>
+                                <input type="number" class="form-control" id="valor" disabled>
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col">
+                                <label for="inicio_vigencia" class="form-label">Início da vigência</label>
+                                <input type="date" class="form-control" id="inicio_vigencia">
+                            </div>
+                            <div class="col">
+                                <label for="fim_vigencia" class="form-label">Fim da vigência</label>
+                                <input type="date" class="form-control" id="fim_vigencia">
+                            </div>
+                        </div>
+                        <div class="row g-3">
+                            <label for="objeto" class="form-label">Objeto</label>
+                            <div class="form-floating">
+                                <textarea class="form-control" id="objeto" style="height: 100px"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- //abageral -->
+
+                <!-- aba itens -->
+                <div class="tab-pane fade" id="itens" role="tabpanel" aria-labelledby="itens-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <h5 class="card-title" style="margin: 0">Itens</h5>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#adicionarItemModal">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Serviço</th>
+                                    <th scope="col">Quantidade</th>
+                                    <th scope="col">Valor Unitário</th>
+                                    <th scope="col">Valor Total</th>
+                                    <th scope="col">Itens</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of contratos; let i=index">
+                                    <th scope="row">{{c.id}}</th>
+                                    <td>{{ c.Servico }}</td>
+                                    <td>{{ c.Quantidade }}</td>
+                                    <td>{{ c.Valor_Unitario }}</td>
+                                    <td>{{ c.Valor_Total! }}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                            data-bs-target="#visualizarItemModal">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <td></td>
+                                    <td></td>
+                                    <td>10,00</td>
+                                    <td>10,00</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!-- //aba itens -->
+
+                <!-- aba Projetos -->
+                <div class="tab-pane fade" id="projeto" role="tabpanel" aria-labelledby="projeto-tab">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <h5 class="card-title" style="margin: 0">Projetos</h5>
+                            </div>
+                            <h5></h5>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Projeto</th>
+                                    <th scope="col">Valor total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>Projeto 1</td>
+                                    <td>10,00</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <td></td>
+                                    <td>10,00</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+                <!-- //aba projetos -->
+            </div>
+        </div>
+
+        <!-- card footer-->
+        <div class="card-footer">
+            <div class="d-flex justify-content-end">
+                <div class="btn-group gap-1" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-secondary">Voltar</button>
+                    <button type="button" class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+        <!-- //card footer -->
+
+    </div>
+    <!-- Modal visualizar item -->
+    <div class="modal fade" id="visualizarItemModal" tabindex="-1" aria-labelledby="visualizarItemModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="visualizarItemModalLabel">
+                        Visualizar item
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <dl>
+                        <dt>Projeto</dt>
+                        <dd>Projeto 1</dd>
+
+                        <dt>Número da requisição</dt>
+                        <dd>1/2021</dd>
+
+                        <dt>Número da ordem</dt>
+                        <dd>1/2021</dd>
+
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal adicionar item -->
+<div class="modal fade" id="adicionarItemModal" tabindex="-1" aria-labelledby="adicionarItemModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="adicionarItemModalLabel">
+                    Adicionar item
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row g-3">
+                        <div class="col">
+                            <label for="prestador" class="form-label">Prestador(razão social)</label>
+                            <input type="text" class="form-control" id="prestador">
+                        </div>
+                        <div class="col">
+                            <label for="Ordem" class="form-label">Ordem</label>
+                            <input type="text" class="form-control" id="ordem">
+                        </div>
+                        <div class="col">
+                            <label for="item_ordem" class="form-label">Item Ordem</label>
+                            <input type="text" class="form-control" id="item_ordem">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer mt-4">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>
