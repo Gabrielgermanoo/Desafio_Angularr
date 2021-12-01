@@ -16,4 +16,9 @@ export class ContratosService {
   getAll(): Observable<Contrato[]>{
     return this.http.get<Contrato[]>(this.contratosUrl, this.httpOptions)
   }
+  
+  create(contrato: Contrato): Observable<Contrato>{
+    console.log()
+    return this.http.post<Contrato>(this.contratosUrl, contrato, this.httpOptions)
+  }
 }
