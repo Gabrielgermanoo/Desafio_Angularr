@@ -1,7 +1,7 @@
 export class Contrato {
-    id: number 
+    id: Number 
     Servico: string
-    Quantidade: number
-    Valor_Unitario: string
-    Valor_Total: string
+    Quantidade: String
+    Valor_Unitario: String
+    Valor_Total: String
 }

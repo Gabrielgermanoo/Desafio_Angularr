@@ -18,7 +18,6 @@ export class ContratosService {
   }
   
   create(contrato: Contrato): Observable<Contrato>{
-    console.log()
     return this.http.post<Contrato>(this.contratosUrl, contrato, this.httpOptions)
   }
 }

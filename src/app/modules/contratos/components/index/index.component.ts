@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Contrato } from "../../shared/contrato.model";
 import { ContratosService } from '../../shared/services/contratos.service';
@@ -14,8 +15,10 @@ export class IndexComponent implements OnInit {
 
   contForm: FormGroup;
 
-  constructor(private contratosService: ContratosService,
-    private contratoService: ContratosService) { }
+  constructor(
+    private contratosService: ContratosService,
+    private router: Router,
+    ) { }
 
   
 
@@ -25,15 +28,17 @@ export class IndexComponent implements OnInit {
     
     this.contForm = new FormGroup({
       'servico': new FormControl('', [Validators.required, Validators.minLength(5)]),
-      'quantidade': new FormControl('', [Validators.required]),
-      'valor_unitario': new FormControl('', [Validators.required])
+      'quantidade': new FormControl(''),
+      'valor_unitario': new FormControl(''),
     })
   }
   onSubmit(){
-    console.log(this.contForm.value)
     const newCont = this.contForm.value
-    this.contratoService.create(newCont)
-      .subscribe()
+    this.contratosService.create(newCont)
+      .subscribe( _ => this.goBack())
   }
 
+  goBack(){
+     this.router.navigateByUrl('/');
+  }
 }

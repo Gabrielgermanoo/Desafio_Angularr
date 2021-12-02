@@ -230,7 +230,7 @@
                             </div>
                             <div class="col">
                                 <label for="Ordem" class="form-label">Quantidade</label>
-                                <input type="number" class="form-control" id="quantidade" formControlName='quantidade'>
+                                <input type="text" class="form-control" id="quantidade" formControlName='quantidade'>
                             </div>
                             <div class="col">
                                 <label for="item_ordem" class="form-label">Valor Unitário</label>
@@ -240,7 +240,7 @@
                         </div>
                         <div class="modal-footer mt-4">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="submit" class="btn btn-primary"
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
                             [disabled]="!contForm.valid"
                             >Adicionar</button>
                         </div>
